@@ -1,0 +1,12 @@
+# This repository intentionally contains no development source tree.
+*.key
+*.pem
+*.p12
+*.pfx
+*.dat
+*.conf
+*.log
+wallet*
+.env
+.env.*
+config.json
