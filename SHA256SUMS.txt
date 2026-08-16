@@ -1,3 +1,3 @@
-3b5532e93bb7d214a08de67565dbdcd5c3fdab4ebf6112f769079660cfdee89f  ruble-core-v1.0.0rc7-win64-portable.zip
+e3ee14e52459a905775da1f0082ee94827575b1a5a79388972b348db69dbe2b1  ruble-core-v1.0.0rc7-win64-portable.zip
 5df0bc0800b50001858b4cd6b8f6a8bc7e4b778b637b236d2f652304cf329521  ruble-core-v1.0.0rc7-win64-setup.exe
-2b929ccb78651b7c05f6e309a357dcd00fac7892063661b5704205b04b324c58  ruble-core-v1.0.0rc7-linux-x86_64.tar.gz
+cddecd0e5dc94894978d7bdb35f44ef52dddc6092e37d614469c2e321c751716  ruble-core-v1.0.0rc7-linux-x86_64.tar.gz
