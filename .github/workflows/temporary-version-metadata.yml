@@ -1,0 +1,35 @@
+name: Temporary version metadata check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/temporary-version-metadata.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: windows-2022
+    timeout-minutes: 5
+    steps:
+      - name: Read published ruble-qt version metadata
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $Root = Join-Path $env:RUNNER_TEMP 'ruble-meta'
+          New-Item -ItemType Directory -Force -Path $Root | Out-Null
+          $Zip = Join-Path $Root 'wallet.zip'
+          Invoke-WebRequest -Uri 'https://github.com/WildBill32/ruble-core-releases/releases/download/v1.0.0rc7/ruble-core-v1.0.0rc7-win64-portable.zip' -OutFile $Zip
+          $Hash = (Get-FileHash -Algorithm SHA256 $Zip).Hash.ToLowerInvariant()
+          if ($Hash -ne 'e3ee14e52459a905775da1f0082ee94827575b1a5a79388972b348db69dbe2b1') { throw "Hash mismatch: $Hash" }
+          $Out = Join-Path $Root 'out'
+          Expand-Archive -Path $Zip -DestinationPath $Out -Force
+          $Qt = (Get-ChildItem $Out -Recurse -Filter ruble-qt.exe | Select-Object -First 1).FullName
+          $V = (Get-Item $Qt).VersionInfo
+          Write-Host "FileVersion=$($V.FileVersion)"
+          Write-Host "ProductVersion=$($V.ProductVersion)"
+          Write-Host "ProductName=$($V.ProductName)"
+          Write-Host "FileDescription=$($V.FileDescription)"
+          Write-Host 'METADATA_CHECK=PASS'
