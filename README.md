@@ -13,7 +13,7 @@
 - Target block interval: approximately 3 minutes
 - Initial block reward: 100 RUB
 - Halving interval: 500,000 blocks
-- Initial premine: 5,000,000 RUB
+- 
 
 Ruble Core is designed to support merged mining in a future network upgrade.
 Implementation and deployment details are intentionally not part of the
